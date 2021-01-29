@@ -5,11 +5,19 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
+import com.michelAdrien.AMTT0121.ui.list.ListFragmentFactory
 
 class MainActivity : AppCompatActivity() {
 
+
+    private val customFragmentFactory = ListFragmentFactory("Toc")
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val fragmentFactory = customFragmentFactory
+        getSupportFragmentManager().setFragmentFactory(fragmentFactory)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
 
