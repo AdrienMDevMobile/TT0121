@@ -5,14 +5,18 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
-import com.michelAdrien.AMTT0121.ui.list.ListFragmentFactory
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.ListFragment
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import com.michelAdrien.AMTT0121.ui.list.DeviceListFragment
+import com.michelAdrien.AMTT0121.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
 
-    private val customFragmentFactory = ListFragmentFactory("Toc")
+    private val customFragmentFactory = MainFragmentFactory("Toc")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val fragmentFactory = customFragmentFactory
@@ -21,7 +25,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
 
-
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<DeviceListFragment>(R.id.nav_host_fragment)
+            }
+        }
 
         val toolbar: Toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
@@ -41,13 +50,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.burger_menu, menu)
-        Log.d("testAdrien", "nous avons inflate")
         return true
     }
 
     //@TODO Put here switch to profile screen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("testAdrien", "clicksurlemenu")
-        return super.onOptionsItemSelected(item)
+
+
+        supportFragmentManager.commit {
+            replace(R.id.nav_host_fragment,
+                    customFragmentFactory.instantiate(classLoader, ProfileFragment::class.java.name))
+            addToBackStack(null)
+        }
+
+        return true
     }
 }
