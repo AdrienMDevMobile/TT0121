@@ -1,17 +1,15 @@
-package com.michelAdrien.AMTT0121
+package com.michelAdrien.AMTT0121.View
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.ListFragment
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import com.michelAdrien.AMTT0121.ui.list.DeviceListFragment
-import com.michelAdrien.AMTT0121.ui.profile.ProfileFragment
+import com.michelAdrien.AMTT0121.R
+import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
+import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,7 +57,8 @@ class MainActivity : AppCompatActivity() {
 
 
         supportFragmentManager.commit {
-            replace(R.id.nav_host_fragment,
+            replace(
+                R.id.nav_host_fragment,
                     customFragmentFactory.instantiate(classLoader, ProfileFragment::class.java.name))
             addToBackStack(null)
         }

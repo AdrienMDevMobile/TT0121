@@ -1,16 +1,14 @@
-package com.michelAdrien.AMTT0121.ui.list
+package com.michelAdrien.AMTT0121.View.list
 
 import android.os.Bundle
-import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import com.michelAdrien.AMTT0121.R
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.michelAdrien.AMTT0121.databinding.FragmentDeviceListBinding
-import com.michelAdrien.AMTT0121.ui.profile.ProfileFragment
 
 class DeviceListFragment(val test : String) : Fragment() {
 
@@ -28,12 +26,18 @@ class DeviceListFragment(val test : String) : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentDeviceListBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        binding.tvList.text = "List + "+ test
+        //binding.tvList.text = "List + "+ test
+
+        val sectionsPagerAdapter = context?.let { SectionsPagerAdapter(it, childFragmentManager) }
+        val viewPager: ViewPager = binding.viewPager
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = binding.tabs
+        tabs.setupWithViewPager(viewPager)
 
         return root
     }

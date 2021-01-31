@@ -1,13 +1,11 @@
-package com.michelAdrien.AMTT0121.ui.profile
+package com.michelAdrien.AMTT0121.View.profile
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.michelAdrien.AMTT0121.R
 import com.michelAdrien.AMTT0121.databinding.FragmentProfileBinding
 
 
@@ -22,7 +20,7 @@ class ProfileFragment(val test : String) : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root = binding.root
@@ -40,7 +38,6 @@ class ProfileFragment(val test : String) : Fragment() {
 
         binding.tvProfile.text = "Prof + "+ test
 
-        Log.d("testAdrien","Prof")
         return root
     }
 }

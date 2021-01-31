@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.ui.list
+package com.michelAdrien.AMTT0121.View.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,7 +30,7 @@ class PlaceholderFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.sub_fragment_main, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
-        pageViewModel.text.observe(this, Observer<String> {
+        pageViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root

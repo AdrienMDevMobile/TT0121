@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.michelAdrien.AMTT0121.ui.list.DeviceListFragment"
+        android:name="com.michelAdrien.AMTT0121.View.list.DeviceListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_device_list" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.michelAdrien.AMTT0121.ui.profile.ProfileFragment"
+        android:name="com.michelAdrien.AMTT0121.View.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 

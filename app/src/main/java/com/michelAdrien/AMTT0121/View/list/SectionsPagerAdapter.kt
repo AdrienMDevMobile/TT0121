@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.ui.list
+package com.michelAdrien.AMTT0121.View.list
 
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -24,7 +24,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
         return PlaceholderFragment.newInstance(position + 1)
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return context.resources.getString(TAB_TITLES[position])
     }
 

@@ -1,6 +1,5 @@
 package com.michelAdrien.AMTT0121
 
-import android.app.UiAutomation
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
@@ -10,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import org.junit.Assert.*
+import com.michelAdrien.AMTT0121.View.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.ui.list
+package com.michelAdrien.AMTT0121.View.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

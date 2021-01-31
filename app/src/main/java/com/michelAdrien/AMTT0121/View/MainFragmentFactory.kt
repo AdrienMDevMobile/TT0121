@@ -1,11 +1,11 @@
-package com.michelAdrien.AMTT0121
+package com.michelAdrien.AMTT0121.View
 
 import android.util.Log
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.michelAdrien.AMTT0121.ui.list.DeviceListFragment
-import com.michelAdrien.AMTT0121.ui.profile.ProfileFragment
+import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
+import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
 
 class MainFragmentFactory(val test : String) : FragmentFactory() {
     /*Variables
@@ -18,19 +18,15 @@ class MainFragmentFactory(val test : String) : FragmentFactory() {
 
     @NonNull
     override fun instantiate(@NonNull  classLoader : ClassLoader, @NonNull  className : String)  : Fragment {
-        Log.d("testAdrien", "className" + className)
 
         val clazz : Class<out Fragment> = loadFragmentClass(classLoader, className)
         if (clazz == DeviceListFragment::class.java) {
-            Log.d("testAdrien", "twoF")
                 return DeviceListFragment(test)
         }
         else if(clazz == ProfileFragment::class.java) {
-            Log.d("testAdrien", "oneF")
             return ProfileFragment(test)
         }
         else {
-            Log.d("testAdrien", "threeF")
             return super.instantiate(classLoader, className)
         }
     }

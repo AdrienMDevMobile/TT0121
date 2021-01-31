@@ -21,6 +21,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.TT0121.Tabs" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="android:textColor">@color/teal_200</item>
+    </style>
+
     <style name="Theme.TT0121.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TT0121.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
