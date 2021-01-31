@@ -16,25 +16,27 @@ import com.michelAdrien.AMTT0121.ui.profile.ProfileFragment
 class MainActivity : AppCompatActivity() {
 
 
-    private val customFragmentFactory = MainFragmentFactory("Toc")
+    private val customFragmentFactory = MainFragmentFactory("3101")
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("testAdrien","onCreate")
+
         val fragmentFactory = customFragmentFactory
         getSupportFragmentManager().setFragmentFactory(fragmentFactory)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
 
+        //We set up the fragment
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<DeviceListFragment>(R.id.nav_host_fragment)
+                add<ProfileFragment>(R.id.nav_host_fragment)
             }
         }
 
         val toolbar: Toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
-
 
         /*
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
@@ -48,18 +50,19 @@ class MainActivity : AppCompatActivity() {
 
     //Creation menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        Log.d("testAdrien","onCreateOptionsMenu")
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.burger_menu, menu)
         return true
     }
 
-    //@TODO Put here switch to profile screen
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
 
         supportFragmentManager.commit {
             replace(R.id.nav_host_fragment,
-                    customFragmentFactory.instantiate(classLoader, ProfileFragment::class.java.name))
+                    customFragmentFactory.instantiate(classLoader, DeviceListFragment::class.java.name))
             addToBackStack(null)
         }
 

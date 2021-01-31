@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.list.DeviceListFragment">
 
+    <include layout="@layout/toolbar_devicelist"
+        android:id="@+id/tbd_devicelist"/>
 
     <TextView
         android:id="@+id/tv_list"

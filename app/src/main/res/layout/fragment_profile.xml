@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
+    <!-- <include layout="@layout/toolbar_main" /> -->
 
     <TextView
         android:id="@+id/tv_profile"
