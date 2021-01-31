@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private val customFragmentFactory = MainFragmentFactory("31012")
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("testAdrien","onCreate")
 
         val fragmentFactory = customFragmentFactory
         getSupportFragmentManager().setFragmentFactory(fragmentFactory)
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
     //Creation menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        Log.d("testAdrien","onCreateOptionsMenu")
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.burger_menu, menu)
         return true
