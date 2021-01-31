@@ -16,7 +16,7 @@ import com.michelAdrien.AMTT0121.ui.profile.ProfileFragment
 class MainActivity : AppCompatActivity() {
 
 
-    private val customFragmentFactory = MainFragmentFactory("3101")
+    private val customFragmentFactory = MainFragmentFactory("31012")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("testAdrien","onCreate")
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<ProfileFragment>(R.id.nav_host_fragment)
+                add<DeviceListFragment>(R.id.nav_host_fragment)
             }
         }
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             replace(R.id.nav_host_fragment,
-                    customFragmentFactory.instantiate(classLoader, DeviceListFragment::class.java.name))
+                    customFragmentFactory.instantiate(classLoader, ProfileFragment::class.java.name))
             addToBackStack(null)
         }
 
