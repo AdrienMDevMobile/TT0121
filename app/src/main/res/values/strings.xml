@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Your Ds</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+
+    <string name="tab_all">Tout</string>
+    <string name="tab_light">Lumières</string>
+    <string name ="tab_heater">Chauffages</string>
+    <string name="tab_roller_shutter">Volets</string>
 
     <string name="menu_profile_setting">Profil</string>
 </resources>

@@ -12,38 +12,45 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class JsondataManager(val context: Context) : dataManager {
+class JsondataManager(val context: Context) : DataManager {
 
     val file_name="data"
 
     override fun getProfile(): UserProfile {
-        return getProfileFromFile(file_name)
+        return getProfileFromFile()
     }
 
     override fun getDeviceList(): ArrayList<IDevice> {
-        return getDeviceListFromFile(file_name)
-    }
-
-    override fun <E> getDevice(id: Int): E {
-        TODO("Not yet implemented")
-    }
-
-    override fun save(id: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun delete(id: Int) {
-        TODO("Not yet implemented")
+        return getDeviceListFromFile()
     }
 
 
-    fun getProfileFromFile(filename:String):UserProfile{
+    override inline fun getDevice(id: Int): IDevice? {
+        val listDevices = getDeviceListFromFile()
+        for(device in listDevices) {
+            if (device.id == id) {
+                return device
+            }
+        }
+        return null
+    }
+    /*
+     override fun save(device: IDevice) {
+         TODO("Not yet implemented")
+     }
+
+     override fun delete(id: Int) {
+         TODO("Not yet implemented")
+     }*/
+
+
+    fun getProfileFromFile():UserProfile{
         JsonReader(context).loadProfileJson(file_name)?.let { return getProfileFromString(it) }
         //If we cannot return anything
         throw JSONException("Could not load profile")
     }
 
-    fun getProfileFromString(datas:String):UserProfile {
+    fun getProfileFromString(datas: String):UserProfile {
         val jObject = JSONObject(datas)
 
         val firstName: String =
@@ -68,13 +75,13 @@ class JsondataManager(val context: Context) : dataManager {
 
 
 
-    fun getDeviceListFromFile(fileName:String):ArrayList<IDevice>{
+    fun getDeviceListFromFile():ArrayList<IDevice>{
          JsonReader(context).loadDeviceListJson(file_name)?.let { return getDeviceListFromString(it) }
         //If we cannot return anything
         return ArrayList<IDevice>()
     }
 
-    fun getDeviceListFromString(datas:String):ArrayList<IDevice>{
+    fun getDeviceListFromString(datas: String):ArrayList<IDevice>{
 
         try {
             val jArray = JSONArray(datas)
@@ -108,17 +115,17 @@ class JsondataManager(val context: Context) : dataManager {
             val typeLight = "Light"
             val typeShutter = "RollerShutter"
 
-            fun getMode(mode:String) : Boolean{
+            fun getMode(mode: String) : Boolean{
                 return mode == "ON"
             }
 
-            fun createIDevice(jsonO : JSONObject) : IDevice?{
+            fun createIDevice(jsonO: JSONObject) : IDevice?{
 
                 val deviceType = jsonO.getString(att_productType)
                 when (deviceType) {
                     typeHeater -> return Heater(jsonO.getInt(att_id), jsonO.getString(att_deviceName),
                             jsonO.getInt("temperature"), getMode(jsonO.getString("mode")))
-                    typeLight ->  return Light(jsonO.getInt(att_id), jsonO.getString(att_deviceName),
+                    typeLight -> return Light(jsonO.getInt(att_id), jsonO.getString(att_deviceName),
                             jsonO.getInt("intensity"), getMode(jsonO.getString("mode")))
                     typeShutter -> return RollerShutter(jsonO.getInt(att_id), jsonO.getString(att_deviceName),
                             jsonO.getInt("position"))

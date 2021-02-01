@@ -6,31 +6,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.michelAdrien.AMTT0121.R
+import com.michelAdrien.AMTT0121.Tool.Data.JsondataManager
+import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
+import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
 
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlaceholderFragment : Fragment() {
+class ListSubFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
+    private lateinit var viewModelFactory : ListViewModelFactory
+    private lateinit var pagerViewModel: DeviceListViewModel
 
+    /*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
+        pagerViewModel = ViewModelProvider(this).get(DeviceListViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
-    }
+    }*/
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
+        viewModelFactory = context?.let {ListViewModelFactory(JsondataManager(it))}!!
+        pagerViewModel = ViewModelProvider(this, viewModelFactory)
+                .get(DeviceListViewModel::class.java)
+        pagerViewModel.setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+
         val root = inflater.inflate(R.layout.sub_fragment_main, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
-        pageViewModel.text.observe(viewLifecycleOwner, {
+        pagerViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root
@@ -48,8 +58,8 @@ class PlaceholderFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
+        fun newInstance(sectionNumber: Int): ListSubFragment {
+            return ListSubFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

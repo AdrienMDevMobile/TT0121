@@ -7,8 +7,10 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.michelAdrien.AMTT0121.R
 
 private val TAB_TITLES = arrayOf(
-        R.string.tab_text_1,
-        R.string.tab_text_2
+        R.string.tab_all,
+        R.string.tab_light,
+        R.string.tab_heater,
+        R.string.tab_roller_shutter
 )
 
 /**
@@ -21,7 +23,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        return ListSubFragment.newInstance(position + 1)
     }
 
     override fun getPageTitle(position: Int): CharSequence {
@@ -29,7 +31,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+        // Show 4 total pages.
+        return 4
     }
 }
