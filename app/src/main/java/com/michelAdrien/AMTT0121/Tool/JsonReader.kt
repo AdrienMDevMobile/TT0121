@@ -38,7 +38,7 @@ open class JsonReader(val context: Context) {
     }
     fun loadProfileJson(file_name: String):String?{
         val jobject = JSONObject(loadJSONFromAsset(file_name))
-        return jobject.getJSONArray("user").toString()
+        return jobject.getJSONObject("user").toString()
     }
 
 

@@ -1,6 +1,7 @@
 package com.michelAdrien.AMTT0121.Tool.Data
 
 import android.content.Context
+import com.michelAdrien.AMTT0121.Model.Adress
 import com.michelAdrien.AMTT0121.Model.UserProfile
 import com.michelAdrien.AMTT0121.Model.device.Heater
 import com.michelAdrien.AMTT0121.Model.device.IDevice
@@ -16,7 +17,7 @@ class JsondataManager(val context: Context) : dataManager {
     val file_name="data"
 
     override fun getProfile(): UserProfile {
-        TODO("Not yet implemented")
+        return getProfileFromFile(file_name)
     }
 
     override fun getDeviceList(): ArrayList<IDevice> {
@@ -35,13 +36,37 @@ class JsondataManager(val context: Context) : dataManager {
         TODO("Not yet implemented")
     }
 
-    /*
-    fun getProfileFromFile(filename:String):UserProfile{
 
+    fun getProfileFromFile(filename:String):UserProfile{
+        JsonReader(context).loadProfileJson(file_name)?.let { return getProfileFromString(it) }
+        //If we cannot return anything
+        throw JSONException("Could not load profile")
     }
 
-    getProfile(datas:String)
-     */
+    fun getProfileFromString(datas:String):UserProfile {
+        val jObject = JSONObject(datas)
+
+        val firstName: String =
+                jObject.getString("firstName")
+        val lastName: String =
+                jObject.getString("lastName")
+        val birthDate:Double =
+                jObject.getDouble("birthDate")
+
+        val addressText: JSONObject =
+                jObject.getJSONObject("address")
+        val addressCity = addressText.getString("city")
+        val addressPostal = addressText.getInt("postalCode")
+        val street = addressText.getString("street")
+        val streetCode = addressText.getString("streetCode")
+        val country = addressText.getString("country")
+        val address =  Adress(addressCity, addressPostal, street, streetCode, country)
+
+
+        return UserProfile(firstName, lastName, address, birthDate)
+    }
+
+
 
     fun getDeviceListFromFile(fileName:String):ArrayList<IDevice>{
          JsonReader(context).loadDeviceListJson(file_name)?.let { return getDeviceListFromString(it) }
