@@ -7,4 +7,8 @@
     <string name="tab_roller_shutter">Volets</string>
 
     <string name="menu_profile_setting">Profil</string>
+
+    <string name="label_device_id">ID :</string>
+    <string name="label_device_name">Nom :</string>
+    <string name="label_device_type">Type :</string>
 </resources>

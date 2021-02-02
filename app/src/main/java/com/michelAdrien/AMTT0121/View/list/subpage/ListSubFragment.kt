@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.View.list
+package com.michelAdrien.AMTT0121.View.list.subpage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,18 +7,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.R
 import com.michelAdrien.AMTT0121.Tool.Data.JsondataManager
 import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
 import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
 
 /**
- * A placeholder fragment containing a simple view.
+ * Currently, all fragments of the tablayout have their own independant VM
+ * Which is a problem : when one VM would delete a device, more memory space taken
+ * Alternative I thought about : passing the common VM through fragment constructor using fragmentFactory
+ * Having the VM be a singleton. Having the datManager used by the VM be a singleton.
  */
-class ListSubFragment : Fragment() {
+class ListSubFragment() : Fragment() {
 
     private lateinit var viewModelFactory : ListViewModelFactory
     private lateinit var pagerViewModel: DeviceListViewModel
+
+    private lateinit var recyclerView: RecyclerView
 
     /*
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +46,25 @@ class ListSubFragment : Fragment() {
         pagerViewModel.setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
 
         val root = inflater.inflate(R.layout.sub_fragment_main, container, false)
-        val textView: TextView = root.findViewById(R.id.section_label)
-        pagerViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
+
+        recyclerView = root.findViewById<RecyclerView>(R.id.rv_list_devices).apply {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            this.setHasFixedSize(true)
+        }
+        pagerViewModel.timerLiveData.observe(viewLifecycleOwner, {
+
+            //Dans l'observe : ecrase et refait le RecyclerViewAdapter
+            val viewAdapter = DeviceAdapter(it)
+            // use a linear layout manager
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            // specify an viewAdapter (see also next example)
+            recyclerView.adapter = viewAdapter
+
         })
         return root
     }
+
 
     companion object {
         /**
@@ -66,4 +86,6 @@ class ListSubFragment : Fragment() {
             }
         }
     }
+
+
 }
