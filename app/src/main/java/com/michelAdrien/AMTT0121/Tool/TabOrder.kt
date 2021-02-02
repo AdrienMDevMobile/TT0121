@@ -17,9 +17,9 @@ class TabOrder {
 
         val filters = arrayOf(
             "",
-            Light::class.java.name,
-            Heater::class.java.name,
-            RollerShutter::class.java.name
+            Light::class.java.simpleName,
+            Heater::class.java.simpleName,
+            RollerShutter::class.java.simpleName
         )
 
     }

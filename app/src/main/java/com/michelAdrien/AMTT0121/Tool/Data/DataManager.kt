@@ -8,6 +8,7 @@ interface DataManager {
 
     fun getProfile() : UserProfile
     fun getDeviceList() : ArrayList<IDevice>
+    fun getDeviceListFilter(filter : String): ArrayList<IDevice>
     fun getDevice(id:Int): IDevice?
     //fun save(device:IDevice)
     //fun delete(id:Int)

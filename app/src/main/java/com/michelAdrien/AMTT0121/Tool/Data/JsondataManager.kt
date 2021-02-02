@@ -8,6 +8,7 @@ import com.michelAdrien.AMTT0121.Model.device.IDevice
 import com.michelAdrien.AMTT0121.Model.device.Light
 import com.michelAdrien.AMTT0121.Model.device.RollerShutter
 import com.michelAdrien.AMTT0121.Tool.JsonReader
+import com.michelAdrien.AMTT0121.Tool.TabOrder
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -22,6 +23,25 @@ class JsondataManager(val context: Context) : DataManager {
 
     override fun getDeviceList(): ArrayList<IDevice> {
         return getDeviceListFromFile()
+    }
+
+    override fun getDeviceListFilter(filter : String): ArrayList<IDevice> {
+        return filterDeviceList(filter, getDeviceListFromFile())
+    }
+
+    fun filterDeviceList(filter : String, list : ArrayList<IDevice>): ArrayList<IDevice>{
+        if(filter == "") //no filter
+            return list
+        else if(filter in TabOrder.filters){
+            val filteredList = ArrayList<IDevice>()
+            for (device in list){
+                if(device.javaClass.simpleName == filter)
+                    filteredList.add(device)
+            }
+            return filteredList
+        }
+        //return nothing if filter is incorrect
+        return ArrayList<IDevice>()
     }
 
 
