@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentFactory
 import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
 import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
 
-class MainFragmentFactory(val test : String) : FragmentFactory() {
+class MainFragmentFactory() : FragmentFactory() {
     /*Variables
     lateinit var test : String
 
@@ -21,10 +21,10 @@ class MainFragmentFactory(val test : String) : FragmentFactory() {
 
         val clazz : Class<out Fragment> = loadFragmentClass(classLoader, className)
         if (clazz == DeviceListFragment::class.java) {
-                return DeviceListFragment(test)
+                return DeviceListFragment()
         }
         else if(clazz == ProfileFragment::class.java) {
-            return ProfileFragment(test)
+            return ProfileFragment()
         }
         else {
             return super.instantiate(classLoader, className)

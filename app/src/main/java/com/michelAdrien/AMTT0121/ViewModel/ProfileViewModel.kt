@@ -1,7 +1,7 @@
 package com.michelAdrien.AMTT0121.ViewModel
 
 import androidx.lifecycle.ViewModel
-import com.michelAdrien.AMTT0121.Tool.Data.DataManager
+import com.michelAdrien.AMTT0121.Tool.Data.IRepository
 
-class ProfileViewModel(val dataManager : DataManager) : ViewModel() {
+class ProfileViewModel(val IRepository : IRepository) : ViewModel() {
 }

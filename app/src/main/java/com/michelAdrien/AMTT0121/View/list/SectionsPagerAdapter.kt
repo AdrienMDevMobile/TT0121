@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.ViewModelProvider
 import com.michelAdrien.AMTT0121.Tool.TabOrder
 import com.michelAdrien.AMTT0121.View.list.subpage.ListSubFragment
 import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
@@ -13,8 +14,9 @@ import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class SectionsPagerAdapter(private val context: Context, val vm:DeviceListViewModel, fm: FragmentManager)
+class SectionsPagerAdapter(private val context: Context,  fm: FragmentManager)
     : FragmentPagerAdapter(fm) {
+//val fact:ViewModelProvider.Factory,
 
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.

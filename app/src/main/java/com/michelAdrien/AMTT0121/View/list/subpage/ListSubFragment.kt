@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.R
-import com.michelAdrien.AMTT0121.Tool.Data.JsondataManager
+import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
 import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
 import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
 
@@ -21,7 +20,7 @@ import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
  * Having the VM be a singleton. Having the datManager used by the VM be a singleton.
  */
 class ListSubFragment() : Fragment() {
-
+//val viewModelFactory : ViewModelProvider.Factory
     private lateinit var viewModelFactory : ListViewModelFactory
     private lateinit var pagerViewModel: DeviceListViewModel
 
@@ -40,7 +39,7 @@ class ListSubFragment() : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-        viewModelFactory = context?.let {ListViewModelFactory(JsondataManager(it))}!!
+        viewModelFactory = context?.let {ListViewModelFactory(JsonRepository(it))}!!
         pagerViewModel = ViewModelProvider(this, viewModelFactory)
                 .get(DeviceListViewModel::class.java)
         pagerViewModel.setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)

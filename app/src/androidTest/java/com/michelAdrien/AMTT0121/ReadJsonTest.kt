@@ -7,7 +7,7 @@ import com.michelAdrien.AMTT0121.Model.UserProfile
 import com.michelAdrien.AMTT0121.Model.device.Heater
 import com.michelAdrien.AMTT0121.Model.device.Light
 import com.michelAdrien.AMTT0121.Model.device.RollerShutter
-import com.michelAdrien.AMTT0121.Tool.Data.JsondataManager
+import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
 import com.michelAdrien.AMTT0121.Tool.JsonReader
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -16,22 +16,22 @@ import org.junit.Test
 class ReadJsonTest {
 
     val data_file_name = "data"
-    lateinit var jsondataManager:JsondataManager
+    lateinit var jsonRepository:JsonRepository
 
     //Set up la variable Context
     private lateinit var context: Context
     @Before
     fun set_up(){
         context = ApplicationProvider.getApplicationContext()
-        jsondataManager = JsondataManager(context)
+        jsonRepository = JsonRepository(context)
     }
 
     @Test
     fun loadJSONDevices(){
         val textJson = JsonReader(context).loadDeviceListJson(data_file_name)
         if(textJson != null){
-            textJson?.let { Log.d("TestJSON", it) }
-            assertTrue(textJson!!.isNotBlank())
+            Log.d("TestJSON", textJson)
+            assertTrue(textJson.isNotBlank())
         }
         else {
             assertTrue(false)
@@ -39,12 +39,13 @@ class ReadJsonTest {
 
     }
 
-    private val stringJSONdevice : String = "[{\"id\":1,\"deviceName\":\"Cuisine\",\"intensity\":50,\"mode\":\"ON\",\"productType\":\"Light\"},{\"id\":2,\"deviceName\":\"Salon\",\"position\":70,\"productType\":\"RollerShutter\"},{\"id\":3,\"deviceName\":\"Chambre\",\"mode\":\"OFF\",\"temperature\":20,\"productType\":\"Heater\"}, {\"id\":4,\"deviceName\":\"Toilette\",\"position\":30,\"productType\":\"RollerShutter\"}]"
-
+    private val stringJSONdevice : String = """
+        [{"id":1,"deviceName":"Cuisine","intensity":50,"mode":"ON","productType":"Light"},{"id":2,"deviceName":"Salon","position":70,"productType":"RollerShutter"},{"id":3,"deviceName":"Chambre","mode":"OFF","temperature":20,"productType":"Heater"}, {"id":4,"deviceName":"Toilette","position":30,"productType":"RollerShutter"}]"
+    """.trimIndent()
     //Now that we checked the string is correctly loaded from file, we check the string is correctly translated to ArrayList
     @Test
     fun getListIDeviceFromString(){
-        val testList = jsondataManager.getDeviceListFromString(stringJSONdevice)
+        val testList = jsonRepository.getDeviceListFromString(stringJSONdevice)
         assertTrue(testList.size == 4)
         assertTrue(testList[0] is Light)
         assertTrue(testList[1] is RollerShutter)
@@ -55,12 +56,12 @@ class ReadJsonTest {
 
     @Test
     fun filterDeviceList(){
-        val testList = jsondataManager.getDeviceListFromString(stringJSONdevice)
-        val testListFull = jsondataManager.filterDeviceList("", testList)
+        val testList = jsonRepository.getDeviceListFromString(stringJSONdevice)
+        val testListFull = jsonRepository.filterDeviceList("", testList)
         assertTrue(testListFull.size == 4)
-        val testListHeater = jsondataManager.filterDeviceList(Heater::class.java.simpleName, testList)
+        val testListHeater = jsonRepository.filterDeviceList(Heater::class.java.simpleName, testList)
         assertTrue(testListHeater.size == 1)
-        val testListShutter = jsondataManager.filterDeviceList(RollerShutter::class.java.simpleName, testList)
+        val testListShutter = jsonRepository.filterDeviceList(RollerShutter::class.java.simpleName, testList)
         assertTrue(testListShutter.size == 2)
     }
 
@@ -68,8 +69,8 @@ class ReadJsonTest {
     fun loadJsonProfile(){
         val textJson = JsonReader(context).loadProfileJson(data_file_name)
         if(textJson != null){
-            textJson?.let { Log.d("TestJSON", it) }
-            assertTrue(textJson!!.isNotBlank())
+            Log.d("TestJSON", textJson)
+            assertTrue(textJson.isNotBlank())
         }
         else {
             assertTrue(false)
@@ -77,11 +78,12 @@ class ReadJsonTest {
 
     }
 
-    private val stringJSONProfile = "{\"firstName\":\"J\",\"lastName\":\"D\",\"address\":{\"city\":\"Issy\",\"postalCode\":92130,\"street\":\"rue Michelet\",\"streetCode\":\"2B\",\"country\":\"Fr\"},\"birthDate\":813766371000}"
-
+    private val stringJSONProfile = """
+        {"firstName":"J","lastName":"D","address":{"city":"Issy","postalCode":92130,"street":"rue Michelet","streetCode":"2B","country":"Fr"},"birthDate":813766371000}"
+    """.trimIndent()
     @Test
     fun getUserProfileFromString(){
-        val testProfile = jsondataManager.getProfileFromString(stringJSONProfile)
+        val testProfile = jsonRepository.getProfileFromString(stringJSONProfile)
         assertTrue(testProfile is UserProfile)
         assertTrue(testProfile != null)
         assertTrue(testProfile.firstName == "J")

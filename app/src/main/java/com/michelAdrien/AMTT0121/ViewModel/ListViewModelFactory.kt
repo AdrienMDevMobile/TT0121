@@ -2,14 +2,15 @@ package com.michelAdrien.AMTT0121.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.michelAdrien.AMTT0121.Tool.Data.DataManager
+import com.michelAdrien.AMTT0121.Tool.Data.IRepository
 
-class ListViewModelFactory(val dataManager : DataManager) : ViewModelProvider.Factory {
+class ListViewModelFactory(val IRepository : IRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
         if (modelClass.isAssignableFrom(DeviceListViewModel::class.java)) {
-            return DeviceListViewModel(dataManager) as T
+            return DeviceListViewModel(IRepository) as T
         }
+        /*
         if (modelClass.isAssignableFrom(LightViewModel::class.java)) {
             return LightViewModel(dataManager) as T
         }
@@ -18,9 +19,9 @@ class ListViewModelFactory(val dataManager : DataManager) : ViewModelProvider.Fa
         }
         if (modelClass.isAssignableFrom(RollerShutterViewModel::class.java)) {
             return RollerShutterViewModel(dataManager) as T
-        }
+        }*/
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-            return LightViewModel(dataManager) as T
+            return ProfileViewModel(IRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
 

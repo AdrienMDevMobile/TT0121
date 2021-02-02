@@ -13,7 +13,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class JsondataManager(val context: Context) : DataManager {
+class JsonRepository(val context: Context) : IRepository {
 
     val file_name="data"
 
@@ -45,7 +45,7 @@ class JsondataManager(val context: Context) : DataManager {
     }
 
 
-    override inline fun getDevice(id: Int): IDevice? {
+    override fun getDevice(id: Int): IDevice? {
         val listDevices = getDeviceListFromFile()
         for(device in listDevices) {
             if (device.id == id) {

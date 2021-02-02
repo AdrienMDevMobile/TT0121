@@ -11,10 +11,12 @@ import com.michelAdrien.AMTT0121.R
 import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
 import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
 
+//Main activity : will load the action bar that will be kept everywhere.
+//Then load the main fragment, starting with Device list Fragment
 class MainActivity : AppCompatActivity() {
 
 
-    private val customFragmentFactory = MainFragmentFactory("31012")
+    private val customFragmentFactory = MainFragmentFactory()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -35,13 +37,6 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
 
-        /*
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
-        */
 
     }
 

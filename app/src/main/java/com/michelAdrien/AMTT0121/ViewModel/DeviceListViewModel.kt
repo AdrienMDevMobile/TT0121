@@ -1,16 +1,14 @@
 package com.michelAdrien.AMTT0121.ViewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.michelAdrien.AMTT0121.Model.device.IDevice
-import com.michelAdrien.AMTT0121.Tool.Data.DataManager
+import com.michelAdrien.AMTT0121.Tool.Data.IRepository
 import com.michelAdrien.AMTT0121.Tool.TabOrder
 import java.util.ArrayList
 
-class DeviceListViewModel(val dataManager : DataManager)  : ViewModel() {
+class DeviceListViewModel(val IRepository : IRepository)  : ViewModel() {
     //private val _filter = MutableLiveData<Int>()
 
     private val _timerLiveData = MutableLiveData<ArrayList<IDevice>>()
@@ -22,7 +20,7 @@ class DeviceListViewModel(val dataManager : DataManager)  : ViewModel() {
     } */
 
     fun setIndex(filter: Int) {
-        _timerLiveData.value = dataManager.getDeviceListFilter(TabOrder.filters[filter-1])
+        _timerLiveData.value = IRepository.getDeviceListFilter(TabOrder.filters[filter-1])
         //_filter.value = filter
     }
 
