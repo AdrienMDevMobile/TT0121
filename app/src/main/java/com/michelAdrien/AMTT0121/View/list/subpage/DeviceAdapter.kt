@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.Model.device.IDevice
 import com.michelAdrien.AMTT0121.R
 
+//Handling DeviceViewHolder
 class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.Adapter<DeviceViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val view = LayoutInflater.from(parent.context)

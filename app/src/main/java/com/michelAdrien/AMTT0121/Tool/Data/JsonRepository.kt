@@ -29,6 +29,27 @@ class JsonRepository(val context: Context) : IRepository {
         return filterDeviceList(filter, getDeviceListFromFile())
     }
 
+
+    override fun getDevice(id: Int): IDevice? {
+        val listDevices = getDeviceListFromFile()
+        for(device in listDevices) {
+            if (device.id == id) {
+                return device
+            }
+        }
+        return null
+    }
+
+    /*
+     override fun save(device: IDevice) {
+         TODO("Not yet implemented")
+     }
+
+     override fun delete(id: Int) {
+         TODO("Not yet implemented")
+     }*/
+
+
     fun filterDeviceList(filter : String, list : ArrayList<IDevice>): ArrayList<IDevice>{
         if(filter == "") //no filter
             return list
@@ -45,25 +66,7 @@ class JsonRepository(val context: Context) : IRepository {
     }
 
 
-    override fun getDevice(id: Int): IDevice? {
-        val listDevices = getDeviceListFromFile()
-        for(device in listDevices) {
-            if (device.id == id) {
-                return device
-            }
-        }
-        return null
-    }
-    /*
-     override fun save(device: IDevice) {
-         TODO("Not yet implemented")
-     }
-
-     override fun delete(id: Int) {
-         TODO("Not yet implemented")
-     }*/
-
-
+    //Those steps are made to make the class more testable.
     fun getProfileFromFile():UserProfile{
         JsonReader(context).loadProfileJson(file_name)?.let { return getProfileFromString(it) }
         //If we cannot return anything
@@ -95,6 +98,7 @@ class JsonRepository(val context: Context) : IRepository {
 
 
 
+    //Those steps are made to make the class more testable.
     fun getDeviceListFromFile():ArrayList<IDevice>{
          JsonReader(context).loadDeviceListJson(file_name)?.let { return getDeviceListFromString(it) }
         //If we cannot return anything

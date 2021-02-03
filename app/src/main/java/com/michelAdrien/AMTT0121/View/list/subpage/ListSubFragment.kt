@@ -13,12 +13,6 @@ import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
 import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
 import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
 
-/**
- * Currently, all fragments of the tablayout have their own independant VM
- * Which is a problem : when one VM would delete a device, more memory space taken
- * Alternative I thought about : passing the common VM through fragment constructor using fragmentFactory
- * Having the VM be a singleton. Having the datManager used by the VM be a singleton.
- */
 class ListSubFragment() : Fragment() {
 //val viewModelFactory : ViewModelProvider.Factory
     private lateinit var viewModelFactory : ListViewModelFactory

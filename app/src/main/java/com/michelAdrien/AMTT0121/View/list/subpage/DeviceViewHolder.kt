@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.R
 
+//Handled by DeviceAdapter
 class DeviceViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val tv_device_name:TextView
     val tv_device_id:TextView
