@@ -1,6 +1,7 @@
 package com.michelAdrien.AMTT0121.Tool.Data
 
 import android.content.Context
+import android.util.Log
 import com.michelAdrien.AMTT0121.Model.Adress
 import com.michelAdrien.AMTT0121.Model.UserProfile
 import com.michelAdrien.AMTT0121.Model.device.Heater
@@ -12,6 +13,7 @@ import com.michelAdrien.AMTT0121.Tool.TabOrder
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.lang.Thread.sleep
 
 class JsonRepository(val context: Context) : IRepository {
 
@@ -26,7 +28,7 @@ class JsonRepository(val context: Context) : IRepository {
     }
 
     override fun getDeviceListFilter(filter : String): ArrayList<IDevice> {
-        return filterDeviceList(filter, getDeviceListFromFile())
+        return filterDeviceList(filter, getDeviceList())
     }
 
 
@@ -54,12 +56,13 @@ class JsonRepository(val context: Context) : IRepository {
         if(filter == "") //no filter
             return list
         else if(filter in TabOrder.filters){
-            val filteredList = ArrayList<IDevice>()
+            return list.filter { it.javaClass.simpleName == filter } as ArrayList<IDevice>
+            /*val filteredList = ArrayList<IDevice>()
             for (device in list){
                 if(device.javaClass.simpleName == filter)
                     filteredList.add(device)
             }
-            return filteredList
+            return filteredList */
         }
         //return nothing if filter is incorrect
         return ArrayList<IDevice>()
