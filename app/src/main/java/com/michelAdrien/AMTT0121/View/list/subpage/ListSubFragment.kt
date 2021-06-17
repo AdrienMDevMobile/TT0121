@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.R
 import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
 import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
-import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+//import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory
+
+@AndroidEntryPoint
 class ListSubFragment() : Fragment() {
-//val viewModelFactory : ViewModelProvider.Factory
-    private lateinit var viewModelFactory : ListViewModelFactory
-    private lateinit var pagerViewModel: DeviceListViewModel
+    //val viewModelFactory : ViewModelProvider.Factory
+    //private lateinit var viewModelFactory : ListViewModelFactory
+    private val pagerViewModel: DeviceListViewModel by viewModels()
 
     private lateinit var recyclerView: RecyclerView
 
@@ -32,10 +36,10 @@ class ListSubFragment() : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
-        viewModelFactory = context?.let {ListViewModelFactory(JsonRepository(it))}!!
-        pagerViewModel = ViewModelProvider(this, viewModelFactory)
-                .get(DeviceListViewModel::class.java)
+        /*
+        viewModelFactory = context?.let {ListViewModelFactory(JsonRepository(it))}!!*/
+        /*pagerViewModel = ViewModelProvider(this)
+                .get(DeviceListViewModel::class.java)*/
         pagerViewModel.setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
 
         val root = inflater.inflate(R.layout.sub_fragment_main, container, false)

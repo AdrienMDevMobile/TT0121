@@ -10,9 +10,11 @@ import androidx.fragment.app.commit
 import com.michelAdrien.AMTT0121.R
 import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
 import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 //Main activity : will load the action bar that will be kept everywhere.
 //Then load the main fragment, starting with Device list Fragment
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 

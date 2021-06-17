@@ -2,13 +2,15 @@ package com.michelAdrien.AMTT0121.Tool
 
 import android.annotation.SuppressLint
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
+import javax.inject.Inject
 
 //Load from a file to create json object
-open class JsonReader(val context: Context) {
+open class JsonReader @Inject constructor(@ApplicationContext private val context:Context) {
 
     @SuppressLint("DefaultLocale")
     fun loadJSONFromAsset(file_name: String): String? {

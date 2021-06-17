@@ -2,6 +2,9 @@ package com.michelAdrien.AMTT0121.ViewModel
 
 import androidx.lifecycle.ViewModel
 import com.michelAdrien.AMTT0121.Tool.Data.IRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProfileViewModel(val IRepository : IRepository) : ViewModel() {
+@HiltViewModel
+class ProfileViewModel @Inject constructor(val IRepository : IRepository) : ViewModel() {
 }

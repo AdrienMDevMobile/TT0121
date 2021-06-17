@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class AppBarTest {
-
+    /*
     @get:Rule
     val mainActivityTestRule : ActivityTestRule<MainActivity> = ActivityTestRule<MainActivity>(
             MainActivity::class.java
@@ -54,6 +54,6 @@ class AppBarTest {
         onView(withId(R.id.profileLayout)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         pressBack()
         onView(withId(R.id.list_device_layout)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-    }
+    }*/
 
 }

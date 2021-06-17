@@ -14,17 +14,21 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.lang.Thread.sleep
+import javax.inject.Inject
 
-class JsonRepository(val context: Context) : IRepository {
+class JsonRepository @Inject constructor(val jsonReader : JsonReader) : IRepository {
 
     val file_name="data"
+
+    var list: ArrayList<IDevice>? = null
 
     override fun getProfile(): UserProfile {
         return getProfileFromFile()
     }
 
     override fun getDeviceList(): ArrayList<IDevice> {
-        return getDeviceListFromFile()
+        if(list.isNullOrEmpty()) list = getDeviceListFromFile()
+        return list!!
     }
 
     override fun getDeviceListFilter(filter : String): ArrayList<IDevice> {
@@ -41,16 +45,6 @@ class JsonRepository(val context: Context) : IRepository {
         }
         return null
     }
-
-    /*
-     override fun save(device: IDevice) {
-         TODO("Not yet implemented")
-     }
-
-     override fun delete(id: Int) {
-         TODO("Not yet implemented")
-     }*/
-
 
     fun filterDeviceList(filter : String, list : ArrayList<IDevice>): ArrayList<IDevice>{
         if(filter == "") //no filter
@@ -69,14 +63,14 @@ class JsonRepository(val context: Context) : IRepository {
     }
 
 
-    //Those steps are made to make the class more testable.
-    fun getProfileFromFile():UserProfile{
-        JsonReader(context).loadProfileJson(file_name)?.let { return getProfileFromString(it) }
+
+    private fun getProfileFromFile():UserProfile{
+        jsonReader.loadProfileJson(file_name)?.let { return getProfileFromString(it) }
         //If we cannot return anything
         throw JSONException("Could not load profile")
     }
 
-    fun getProfileFromString(datas: String):UserProfile {
+    private fun getProfileFromString(datas: String):UserProfile {
         val jObject = JSONObject(datas)
 
         val firstName: String =
@@ -100,15 +94,13 @@ class JsonRepository(val context: Context) : IRepository {
     }
 
 
-
-    //Those steps are made to make the class more testable.
-    fun getDeviceListFromFile():ArrayList<IDevice>{
-         JsonReader(context).loadDeviceListJson(file_name)?.let { return getDeviceListFromString(it) }
+    private fun getDeviceListFromFile():ArrayList<IDevice>{
+         jsonReader.loadDeviceListJson(file_name)?.let { return getDeviceListFromString(it) }
         //If we cannot return anything
         return ArrayList<IDevice>()
     }
 
-    fun getDeviceListFromString(datas: String):ArrayList<IDevice>{
+    private fun getDeviceListFromString(datas: String):ArrayList<IDevice>{
 
         try {
             val jArray = JSONArray(datas)

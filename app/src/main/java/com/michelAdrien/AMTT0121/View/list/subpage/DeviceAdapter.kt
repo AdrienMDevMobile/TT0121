@@ -1,13 +1,15 @@
 package com.michelAdrien.AMTT0121.View.list.subpage
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.Model.device.IDevice
 import com.michelAdrien.AMTT0121.R
 
 //Handling DeviceViewHolder
-class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.Adapter<DeviceViewHolder>()  {
+class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.device_view_item, parent, false)
@@ -22,6 +24,19 @@ class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.
     }
 
     override fun getItemCount() = device_list.size
+
+
+    class DeviceViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        val tv_device_name: TextView
+        val tv_device_id: TextView
+        val tv_device_type: TextView
+
+        init{
+            tv_device_name = view.findViewById(R.id.tv_device_name)
+            tv_device_id = view.findViewById(R.id.tv_device_id)
+            tv_device_type = view.findViewById(R.id.tv_device_type)
+        }
+    }
 
 }
 
