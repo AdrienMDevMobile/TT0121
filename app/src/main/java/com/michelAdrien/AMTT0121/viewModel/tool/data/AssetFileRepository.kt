@@ -43,10 +43,13 @@ class AssetFileRepository @Inject constructor(val jsonReader : JsonReader) : IRe
     }
 
     override suspend fun getDevice(id: Int): IDevice? {
-        val listDevices = getDeviceListFromFile()
-        for(device in listDevices) {
-            if (device.id == id) {
-                return device
+        if(list.isNullOrEmpty()) list = getDeviceListFromFile()
+
+        list.let {
+            for(device in list!!) {
+                if (device.id == id) {
+                    return device
+                }
             }
         }
         return null

@@ -16,19 +16,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ListSubFragment() : Fragment() {
-    //val viewModelFactory : ViewModelProvider.Factory
-    //private lateinit var viewModelFactory : ListViewModelFactory
     private val pagerViewModel: DeviceListViewModel by viewModels()
 
     private lateinit var recyclerView: RecyclerView
-
-    /*
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        pagerViewModel = ViewModelProvider(this).get(DeviceListViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
-        }
-    }*/
+    private var section_number = 0
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +29,8 @@ class ListSubFragment() : Fragment() {
         viewModelFactory = context?.let {ListViewModelFactory(JsonRepository(it))}!!*/
         /*pagerViewModel = ViewModelProvider(this)
                 .get(DeviceListViewModel::class.java)*/
-        pagerViewModel.setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+        section_number = arguments?.getInt(ARG_SECTION_NUMBER) ?: 1
+        pagerViewModel.setIndex(section_number)
 
         val root = inflater.inflate(R.layout.sub_fragment_main, container, false)
 
@@ -48,7 +40,6 @@ class ListSubFragment() : Fragment() {
             this.setHasFixedSize(true)
         }
         pagerViewModel.timerLiveData.observe(viewLifecycleOwner, {
-
             //Dans l'observe : ecrase et refait le RecyclerViewAdapter
             val viewAdapter = DeviceAdapter(it)
             // use a linear layout manager
