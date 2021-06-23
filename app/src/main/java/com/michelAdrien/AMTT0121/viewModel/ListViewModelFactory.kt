@@ -1,8 +1,8 @@
-package com.michelAdrien.AMTT0121.ViewModel
+package com.michelAdrien.AMTT0121.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.michelAdrien.AMTT0121.Tool.Data.IRepository
+import com.michelAdrien.AMTT0121.viewModel.tool.data.IRepository
 
 class ListViewModelFactory(val IRepository : IRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

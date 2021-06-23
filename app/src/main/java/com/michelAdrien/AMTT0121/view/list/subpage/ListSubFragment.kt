@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.View.list.subpage
+package com.michelAdrien.AMTT0121.view.list.subpage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michelAdrien.AMTT0121.R
-import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
-import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
+import com.michelAdrien.AMTT0121.viewModel.DeviceListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 //import com.michelAdrien.AMTT0121.ViewModel.ListViewModelFactory

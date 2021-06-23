@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.Model.device
+package com.michelAdrien.AMTT0121.model.device
 
 class Light( id: Int, deviceName:String, val intensity:Int, val mode: Boolean): IDevice(id, deviceName) {
 

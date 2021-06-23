@@ -1,11 +1,11 @@
-package com.michelAdrien.AMTT0121.ViewModel
+package com.michelAdrien.AMTT0121.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.michelAdrien.AMTT0121.Model.device.IDevice
-import com.michelAdrien.AMTT0121.Tool.Data.IRepository
-import com.michelAdrien.AMTT0121.View.TabOrder
+import com.michelAdrien.AMTT0121.model.device.IDevice
+import com.michelAdrien.AMTT0121.viewModel.tool.data.IRepository
+import com.michelAdrien.AMTT0121.view.TabOrder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.ArrayList
 import javax.inject.Inject

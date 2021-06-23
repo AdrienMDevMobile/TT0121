@@ -1,8 +1,8 @@
-package com.michelAdrien.AMTT0121.Tool.Data
+package com.michelAdrien.AMTT0121.viewModel.tool.data
 
 
-import com.michelAdrien.AMTT0121.Model.UserProfile
-import com.michelAdrien.AMTT0121.Model.device.IDevice
+import com.michelAdrien.AMTT0121.model.UserProfile
+import com.michelAdrien.AMTT0121.model.device.IDevice
 
 //The interface will ease future change (for instance using a Repository tool that uses database)
 interface IRepository {

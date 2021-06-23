@@ -1,11 +1,11 @@
-package com.michelAdrien.AMTT0121.View.list.subpage
+package com.michelAdrien.AMTT0121.view.list.subpage
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.michelAdrien.AMTT0121.Model.device.IDevice
+import com.michelAdrien.AMTT0121.model.device.IDevice
 import com.michelAdrien.AMTT0121.R
 
 //Handling DeviceViewHolder

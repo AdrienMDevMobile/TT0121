@@ -1,11 +1,11 @@
-package com.michelAdrien.AMTT0121.View.list
+package com.michelAdrien.AMTT0121.view.list
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.michelAdrien.AMTT0121.View.TabOrder
-import com.michelAdrien.AMTT0121.View.list.subpage.ListSubFragment
+import com.michelAdrien.AMTT0121.view.TabOrder
+import com.michelAdrien.AMTT0121.view.list.subpage.ListSubFragment
 
 
 /**

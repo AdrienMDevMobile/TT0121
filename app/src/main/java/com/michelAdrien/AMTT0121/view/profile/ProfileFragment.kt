@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.View.profile
+package com.michelAdrien.AMTT0121.view.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

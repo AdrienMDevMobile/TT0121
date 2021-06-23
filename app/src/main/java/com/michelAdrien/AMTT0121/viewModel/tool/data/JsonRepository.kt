@@ -1,13 +1,13 @@
-package com.michelAdrien.AMTT0121.Tool.Data
+package com.michelAdrien.AMTT0121.viewModel.tool.data
 
-import com.michelAdrien.AMTT0121.Model.Adress
-import com.michelAdrien.AMTT0121.Model.UserProfile
-import com.michelAdrien.AMTT0121.Model.device.Heater
-import com.michelAdrien.AMTT0121.Model.device.IDevice
-import com.michelAdrien.AMTT0121.Model.device.Light
-import com.michelAdrien.AMTT0121.Model.device.RollerShutter
-import com.michelAdrien.AMTT0121.Tool.JsonReader
-import com.michelAdrien.AMTT0121.View.TabOrder
+import com.michelAdrien.AMTT0121.model.Adress
+import com.michelAdrien.AMTT0121.model.UserProfile
+import com.michelAdrien.AMTT0121.model.device.Heater
+import com.michelAdrien.AMTT0121.model.device.IDevice
+import com.michelAdrien.AMTT0121.model.device.Light
+import com.michelAdrien.AMTT0121.model.device.RollerShutter
+import com.michelAdrien.AMTT0121.viewModel.tool.JsonReader
+import com.michelAdrien.AMTT0121.view.TabOrder
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

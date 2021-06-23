@@ -1,17 +1,5 @@
 package com.michelAdrien.AMTT0121
 
-import android.content.Context
-import androidx.test.core.app.ApplicationProvider
-import com.michelAdrien.AMTT0121.Model.UserProfile
-import com.michelAdrien.AMTT0121.Model.device.Heater
-import com.michelAdrien.AMTT0121.Model.device.Light
-import com.michelAdrien.AMTT0121.Model.device.RollerShutter
-import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
-import com.michelAdrien.AMTT0121.Tool.JsonReader
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
-
 class ReadJsonTest {
     /*
 

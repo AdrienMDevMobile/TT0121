@@ -1,11 +1,11 @@
-package com.michelAdrien.AMTT0121.View
+package com.michelAdrien.AMTT0121.view
 
 
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
-import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
+import com.michelAdrien.AMTT0121.view.list.DeviceListFragment
+import com.michelAdrien.AMTT0121.view.profile.ProfileFragment
 
 class MainFragmentFactory() : FragmentFactory() {
     /*Variables

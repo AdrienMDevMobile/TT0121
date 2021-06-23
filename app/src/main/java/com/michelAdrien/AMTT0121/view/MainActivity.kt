@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.View
+package com.michelAdrien.AMTT0121.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.michelAdrien.AMTT0121.R
-import com.michelAdrien.AMTT0121.View.list.DeviceListFragment
-import com.michelAdrien.AMTT0121.View.profile.ProfileFragment
+import com.michelAdrien.AMTT0121.view.list.DeviceListFragment
+import com.michelAdrien.AMTT0121.view.profile.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 //Main activity : will load the action bar that will be kept everywhere.

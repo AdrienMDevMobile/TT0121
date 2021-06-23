@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.View.list
+package com.michelAdrien.AMTT0121.view.list
 
 import android.os.Bundle
 
@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.michelAdrien.AMTT0121.Tool.Data.JsonRepository
-import com.michelAdrien.AMTT0121.ViewModel.DeviceListViewModel
 import com.michelAdrien.AMTT0121.databinding.FragmentDeviceListBinding
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,8 +1,8 @@
-package com.michelAdrien.AMTT0121.View
+package com.michelAdrien.AMTT0121.view
 
-import com.michelAdrien.AMTT0121.Model.device.Heater
-import com.michelAdrien.AMTT0121.Model.device.Light
-import com.michelAdrien.AMTT0121.Model.device.RollerShutter
+import com.michelAdrien.AMTT0121.model.device.Heater
+import com.michelAdrien.AMTT0121.model.device.Light
+import com.michelAdrien.AMTT0121.model.device.RollerShutter
 import com.michelAdrien.AMTT0121.R
 
 class TabOrder {
