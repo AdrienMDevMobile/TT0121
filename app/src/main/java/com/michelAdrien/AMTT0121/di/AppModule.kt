@@ -1,7 +1,7 @@
 package com.michelAdrien.AMTT0121.di
 
 import com.michelAdrien.AMTT0121.viewModel.tool.data.IRepository
-import com.michelAdrien.AMTT0121.viewModel.tool.data.JsonRepository
+import com.michelAdrien.AMTT0121.viewModel.tool.data.AssetFileRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -10,12 +10,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class ListDevicesModule {
+abstract class AppModule {
 
     @Singleton
     @Binds
     abstract fun bindDeviceListRepository(
-        list:JsonRepository
+        list:AssetFileRepository
     ) : IRepository
 
 }
