@@ -1,7 +1,6 @@
 package com.michelAdrien.AMTT0121
 
 import android.content.Context
-import android.util.Log
 import androidx.test.core.app.ApplicationProvider
 import com.michelAdrien.AMTT0121.Model.UserProfile
 import com.michelAdrien.AMTT0121.Model.device.Heater
@@ -31,7 +30,6 @@ class ReadJsonTest {
     fun loadJSONDevices(){
         val textJson = JsonReader(context).loadDeviceListJson(data_file_name)
         if(textJson != null){
-            Log.d("TestJSON", textJson)
             assertTrue(textJson.isNotBlank())
         }
         else {
@@ -70,7 +68,6 @@ class ReadJsonTest {
     fun loadJsonProfile(){
         val textJson = JsonReader(context).loadProfileJson(data_file_name)
         if(textJson != null){
-            Log.d("TestJSON", textJson)
             assertTrue(textJson.isNotBlank())
         }
         else {

@@ -1,7 +1,5 @@
 package com.michelAdrien.AMTT0121.Tool.Data
 
-import android.content.Context
-import android.util.Log
 import com.michelAdrien.AMTT0121.Model.Adress
 import com.michelAdrien.AMTT0121.Model.UserProfile
 import com.michelAdrien.AMTT0121.Model.device.Heater
@@ -9,11 +7,10 @@ import com.michelAdrien.AMTT0121.Model.device.IDevice
 import com.michelAdrien.AMTT0121.Model.device.Light
 import com.michelAdrien.AMTT0121.Model.device.RollerShutter
 import com.michelAdrien.AMTT0121.Tool.JsonReader
-import com.michelAdrien.AMTT0121.Tool.TabOrder
+import com.michelAdrien.AMTT0121.View.TabOrder
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.lang.Thread.sleep
 import javax.inject.Inject
 
 class JsonRepository @Inject constructor(val jsonReader : JsonReader) : IRepository {
@@ -31,10 +28,19 @@ class JsonRepository @Inject constructor(val jsonReader : JsonReader) : IReposit
         return list!!
     }
 
-    override fun getDeviceListFilter(filter : String): ArrayList<IDevice> {
+    override fun getDeviceListFiltered(filter : String): ArrayList<IDevice> {
         return filterDeviceList(filter, getDeviceList())
     }
 
+    fun filterDeviceList(filter : String, list : ArrayList<IDevice>): ArrayList<IDevice>{
+        if(filter == "") //no filter
+            return list
+        else if(filter in TabOrder.filters){
+            return list.filter { it.javaClass.simpleName == filter } as ArrayList<IDevice>
+        }
+        //return nothing if filter is incorrect
+        return ArrayList<IDevice>()
+    }
 
     override fun getDevice(id: Int): IDevice? {
         val listDevices = getDeviceListFromFile()
@@ -46,21 +52,7 @@ class JsonRepository @Inject constructor(val jsonReader : JsonReader) : IReposit
         return null
     }
 
-    fun filterDeviceList(filter : String, list : ArrayList<IDevice>): ArrayList<IDevice>{
-        if(filter == "") //no filter
-            return list
-        else if(filter in TabOrder.filters){
-            return list.filter { it.javaClass.simpleName == filter } as ArrayList<IDevice>
-            /*val filteredList = ArrayList<IDevice>()
-            for (device in list){
-                if(device.javaClass.simpleName == filter)
-                    filteredList.add(device)
-            }
-            return filteredList */
-        }
-        //return nothing if filter is incorrect
-        return ArrayList<IDevice>()
-    }
+
 
 
 

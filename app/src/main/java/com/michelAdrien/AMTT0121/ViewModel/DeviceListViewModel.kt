@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.michelAdrien.AMTT0121.Model.device.IDevice
 import com.michelAdrien.AMTT0121.Tool.Data.IRepository
-import com.michelAdrien.AMTT0121.Tool.TabOrder
+import com.michelAdrien.AMTT0121.View.TabOrder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.ArrayList
 import javax.inject.Inject
@@ -17,13 +17,8 @@ class DeviceListViewModel @Inject constructor(val IRepository : IRepository)  : 
     private val _timerLiveData = MutableLiveData<ArrayList<IDevice>>()
     val timerLiveData: LiveData<ArrayList<IDevice>> = _timerLiveData
 
-    /*
-    val text: LiveData<String> = Transformations.map(_filter) {
-        "Hello world from filter: $it"
-    } */
-
     fun setIndex(filter: Int) {
-        _timerLiveData.value = IRepository.getDeviceListFilter(TabOrder.filters[filter-1])
+        _timerLiveData.value = IRepository.getDeviceListFiltered(TabOrder.filters[filter-1])
         //_filter.value = filter
     }
 

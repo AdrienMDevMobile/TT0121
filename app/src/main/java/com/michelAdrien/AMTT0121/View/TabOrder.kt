@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.Tool
+package com.michelAdrien.AMTT0121.View
 
 import com.michelAdrien.AMTT0121.Model.device.Heater
 import com.michelAdrien.AMTT0121.Model.device.Light
