@@ -11,4 +11,12 @@
     <string name="label_device_id">ID :</string>
     <string name="label_device_name">Nom :</string>
     <string name="label_device_type">Type :</string>
+
+
+    <string name="tv_heater_name">Nom Chauffage</string>
+    <string name="sw_device_on">Allumé</string>
+
+    <string name="tv_light_name">Nom Chauffage</string>
+
+    <string name="tv_roller_shutter_name">Nom Volet</string>
 </resources>

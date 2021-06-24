@@ -27,7 +27,7 @@ class HeaterFragment : Fragment() {
     ): View? {
         if (getArguments() != null) {
             if (getArguments() != null) {
-                Toast.makeText(activity, requireArguments().getString(MainFragmentFactory.DEVICE_ID_EXTRA), Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "ID :" + requireArguments().getString(MainFragmentFactory.DEVICE_ID_EXTRA), Toast.LENGTH_LONG).show()
             }
         }
         return inflater.inflate(R.layout.heater_fragment, container, false)

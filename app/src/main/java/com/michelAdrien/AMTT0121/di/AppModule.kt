@@ -16,7 +16,8 @@ abstract class AppModule {
     @Singleton
     @Binds
     abstract fun bindDeviceListRepository(
-        list: AssetFileRepository
+        list: VolleyRepository
     ) : IRepository
+    //AssetFileRepository
 
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.michelAdrien.AMTT0121">
+    package="com.michelAdrien.AMTT0121"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        tools:replace="android:icon"
         android:name=".di.TT0121Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
