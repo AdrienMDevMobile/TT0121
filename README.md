@@ -1,10 +1,21 @@
 # TT0121 Readme
 # Done :
+
+Design of the different parameter pages
+[Imgur](https://imgur.com/uJtvjHx)
+[Imgur](https://imgur.com/BgMXXZc)
+[Imgur](https://imgur.com/HqDPcPN)
+
+**Hilt** for Dependency Injection
+**Volley** and **Coroutine** to get the device list.
+
 **Home page shows the list of devices and filter them using tabs.**
 
 <img src="https://i.imgur.com/3KbxZYO.png">
 
 <img src="https://i.imgur.com/KAmEJU9.png">
+
+
 
 Application has a **MVVM** structure.
 
