@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.view.device
+package com.michelAdrien.AMTT0121.viewModel.device
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

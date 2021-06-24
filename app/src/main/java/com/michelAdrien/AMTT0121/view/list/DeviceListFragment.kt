@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.michelAdrien.AMTT0121.R
 import com.michelAdrien.AMTT0121.databinding.FragmentDeviceListBinding
+import com.michelAdrien.AMTT0121.model.device.IDevice
 import com.michelAdrien.AMTT0121.view.TabOrder
 import com.michelAdrien.AMTT0121.viewModel.DeviceListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 //The fragment of the home page
 @AndroidEntryPoint
-class DeviceListFragment() : Fragment() { //clickListener: (IDevice) -> Unit
+class DeviceListFragment(val clickListener: (IDevice) -> Unit) : Fragment() { //clickListener: (IDevice) -> Unit
 
 
     private val deviceListViewModel: DeviceListViewModel by viewModels()
@@ -44,7 +45,7 @@ class DeviceListFragment() : Fragment() { //clickListener: (IDevice) -> Unit
         }
         recyclerView.layoutManager = LinearLayoutManager(context)
         deviceListViewModel.timerLiveData.observe(viewLifecycleOwner, {
-            val viewAdapter = DeviceAdapter(it)
+            val viewAdapter = DeviceListAdapter(it, clickListener)
             recyclerView.adapter = viewAdapter
         })
 

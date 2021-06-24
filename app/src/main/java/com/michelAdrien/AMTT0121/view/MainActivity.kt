@@ -1,11 +1,11 @@
 package com.michelAdrien.AMTT0121.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.michelAdrien.AMTT0121.R
@@ -14,20 +14,19 @@ import com.michelAdrien.AMTT0121.view.list.DeviceListFragment
 import com.michelAdrien.AMTT0121.view.profile.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 
+
 //Main activity : will load the action bar that will be kept everywhere.
 //Then load the main fragment, starting with Device list Fragment
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 
-    private val customFragmentFactory = MainFragmentFactory()
-    /*
-    { device: IDevice ->
+    private val customFragmentFactory = MainFragmentFactory { device: IDevice ->
         deviceClicked(
             device
         )
     }
-     */
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -53,14 +52,12 @@ class MainActivity : AppCompatActivity() {
 
     //Creation menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.burger_menu, menu)
         return true
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
 
         supportFragmentManager.commit {
             replace(
@@ -72,13 +69,17 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    /*
-    private fun deviceClicked(device : IDevice) {
-        Toast.makeText(this, "Clicked: ${device.id}", Toast.LENGTH_LONG).show()
 
-        // Launch second activity, pass part ID as string parameter
-        //val showDetailActivityIntent = Intent(this, PartDetailActivity::class.java)
-        //showDetailActivityIntent.putExtra(Intent.EXTRA_TEXT, partItem.id.toString())
-        //startActivity(showDetailActivityIntent)
-    }*/
+    private fun deviceClicked(device : IDevice) {
+        val myArguments = Bundle()
+        myArguments.putString(MainFragmentFactory.DEVICE_ID_EXTRA, device.id.toString())
+
+        val manager = supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+        val fragment = customFragmentFactory.instantiate(classLoader, device.javaClass.simpleName)
+        fragment.arguments = myArguments
+        transaction.replace(R.id.nav_host_fragment, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 }

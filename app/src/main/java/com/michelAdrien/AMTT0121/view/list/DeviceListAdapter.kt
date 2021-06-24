@@ -9,16 +9,16 @@ import com.michelAdrien.AMTT0121.model.device.IDevice
 import com.michelAdrien.AMTT0121.R
 
 //Handling DeviceViewHolder
-class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>()  {
+class DeviceListAdapter(private val device_list: ArrayList<IDevice>, val clickListener: (IDevice) -> Unit) : RecyclerView.Adapter<DeviceListAdapter.DeviceViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.device_view_item, parent, false)
 
-        return DeviceViewHolder(view) //val clickListener: (IDevice) -> Unit
+        return DeviceViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        holder.bind(device_list[position]) //clickListener
+        holder.bind(device_list[position], clickListener)
     }
 
     override fun getItemCount() = device_list.size
@@ -35,11 +35,11 @@ class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.
             tv_device_type = view.findViewById(R.id.tv_device_type)
         }
 
-        fun bind(device : IDevice ){
+        fun bind(device : IDevice,  clickListener: (IDevice) -> Unit ){
             this.tv_device_id.text = device.id.toString()
             this.tv_device_name.text = device.deviceName
             this.tv_device_type.text = device.javaClass.simpleName
-            //itemView.setOnClickListener{ clickListener(device) } ,  clickListener: (IDevice) -> Unit
+            itemView.setOnClickListener{ clickListener(device) }
         }
 
 
