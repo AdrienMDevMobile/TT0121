@@ -39,6 +39,7 @@ class DeviceListFragment(val clickListener: (IDevice) -> Unit) : Fragment() { //
         _binding = FragmentDeviceListBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        //Mise en place RecyclerView (la liste des devices)
         deviceListViewModel.setIndex(section_number)
         recyclerView = root.findViewById<RecyclerView>(R.id.rv_list_devices).apply {
             this.setHasFixedSize(true)
@@ -49,11 +50,8 @@ class DeviceListFragment(val clickListener: (IDevice) -> Unit) : Fragment() { //
             recyclerView.adapter = viewAdapter
         })
 
-        //val sectionsPagerAdapter = context?.let { SectionsPagerAdapter(it, childFragmentManager) }
-        //val viewPager: ViewPager = binding.viewPager
-        //viewPager.adapter = sectionsPagerAdapter
+        //Mise en page des tabs (haut de la page)
         val tabs: TabLayout = binding.tabs
-        //tabs.setupWithViewPager(viewPager)
         for(tabName in TabOrder.TAB_TITLES){
             tabs.addTab(tabs.newTab().setText(tabName))
         }

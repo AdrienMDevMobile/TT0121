@@ -24,7 +24,7 @@ class ProfileFragment() : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        binding.tvProfile.text = "Prof + "
+        binding.tvProfile.text = "Profile"
 
         return root
     }
