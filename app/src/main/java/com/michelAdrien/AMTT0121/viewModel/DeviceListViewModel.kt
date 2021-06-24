@@ -23,7 +23,7 @@ class DeviceListViewModel @Inject constructor(val iRepository : IRepository)  : 
 
     fun setIndex(filter: Int) {
         viewModelScope.launch(Dispatchers.IO){
-            _timerLiveData.postValue(iRepository.getDeviceListFiltered(TabOrder.filters[filter-1]))
+            _timerLiveData.postValue(iRepository.getDeviceListFiltered(TabOrder.filters[filter]))
         }
     }
 

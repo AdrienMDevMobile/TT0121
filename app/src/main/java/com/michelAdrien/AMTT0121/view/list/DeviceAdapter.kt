@@ -1,4 +1,4 @@
-package com.michelAdrien.AMTT0121.view.list.subpage
+package com.michelAdrien.AMTT0121.view.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,13 +14,11 @@ class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.device_view_item, parent, false)
 
-        return DeviceViewHolder(view)
+        return DeviceViewHolder(view) //val clickListener: (IDevice) -> Unit
     }
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        holder.tv_device_id.text = device_list[position].id.toString()
-        holder.tv_device_name.text = device_list[position].deviceName
-        holder.tv_device_type.text = device_list[position].javaClass.simpleName
+        holder.bind(device_list[position]) //clickListener
     }
 
     override fun getItemCount() = device_list.size
@@ -36,6 +34,15 @@ class DeviceAdapter(private val device_list: ArrayList<IDevice>) : RecyclerView.
             tv_device_id = view.findViewById(R.id.tv_device_id)
             tv_device_type = view.findViewById(R.id.tv_device_type)
         }
+
+        fun bind(device : IDevice ){
+            this.tv_device_id.text = device.id.toString()
+            this.tv_device_name.text = device.deviceName
+            this.tv_device_type.text = device.javaClass.simpleName
+            //itemView.setOnClickListener{ clickListener(device) } ,  clickListener: (IDevice) -> Unit
+        }
+
+
     }
 
 }

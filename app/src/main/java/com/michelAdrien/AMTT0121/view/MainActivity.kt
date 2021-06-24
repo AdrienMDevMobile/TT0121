@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.michelAdrien.AMTT0121.R
+import com.michelAdrien.AMTT0121.model.device.IDevice
 import com.michelAdrien.AMTT0121.view.list.DeviceListFragment
 import com.michelAdrien.AMTT0121.view.profile.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +21,13 @@ class MainActivity : AppCompatActivity() {
 
 
     private val customFragmentFactory = MainFragmentFactory()
+    /*
+    { device: IDevice ->
+        deviceClicked(
+            device
+        )
+    }
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -62,4 +71,14 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+
+    /*
+    private fun deviceClicked(device : IDevice) {
+        Toast.makeText(this, "Clicked: ${device.id}", Toast.LENGTH_LONG).show()
+
+        // Launch second activity, pass part ID as string parameter
+        //val showDetailActivityIntent = Intent(this, PartDetailActivity::class.java)
+        //showDetailActivityIntent.putExtra(Intent.EXTRA_TEXT, partItem.id.toString())
+        //startActivity(showDetailActivityIntent)
+    }*/
 }
