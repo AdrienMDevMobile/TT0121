@@ -2,8 +2,11 @@
 # Done :
 
 Design of the different parameter pages
-[Imgur](https://imgur.com/uJtvjHx)
-[Imgur](https://imgur.com/BgMXXZc)
+
+<img src="https://i.imgur.com/v9uWUff.png">
+<img src="https://i.imgur.com/P5aLHWh.png">
+<img src="https://i.imgur.com/WsZ0EQH.png">
+
 [Imgur](https://imgur.com/HqDPcPN)
 
 **Hilt** for Dependency Injection

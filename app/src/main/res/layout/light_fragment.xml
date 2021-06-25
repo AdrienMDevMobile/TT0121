@@ -22,8 +22,14 @@
         android:id="@+id/sw_heater_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sw_device_on"
-        app:layout_constraintStart_toStartOf="@+id/tv_name_light"
+        android:textAlignment="center"
+        android:textOff="@string/switch_off"
+        android:textOn="@string/switch_on"
+        android:showText="true"
+        android:track="@drawable/switch_track_custom"
+        android:thumb="@drawable/switch_thumb_custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_light" />
 
     <com.triggertrap.seekarc.SeekArc

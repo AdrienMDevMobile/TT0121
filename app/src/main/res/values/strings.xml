@@ -19,4 +19,6 @@
     <string name="tv_light_name">Nom Chauffage</string>
 
     <string name="tv_roller_shutter_name">Nom Volet</string>
+    <string name="switch_off">OFF</string>
+    <string name="switch_on">ON</string>
 </resources>
