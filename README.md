@@ -3,9 +3,9 @@
 
 Design of the different parameter pages
 
-<img src="https://i.imgur.com/v9uWUff.png">
-<img src="https://i.imgur.com/P5aLHWh.png">
-<img src="https://i.imgur.com/WsZ0EQH.png">
+<img src="https://i.imgur.com/v9uWUff.png" width="200">
+<img src="https://i.imgur.com/P5aLHWh.png" width="200">
+<img src="https://i.imgur.com/WsZ0EQH.png" width="200">
 
 [Imgur](https://imgur.com/HqDPcPN)
 
@@ -14,9 +14,9 @@ Design of the different parameter pages
 
 **Home page shows the list of devices and filter them using tabs.**
 
-<img src="https://i.imgur.com/3KbxZYO.png">
+<img src="https://i.imgur.com/3KbxZYO.png" width="200">
 
-<img src="https://i.imgur.com/KAmEJU9.png">
+<img src="https://i.imgur.com/KAmEJU9.png" width="200">
 
 
 
