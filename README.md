@@ -29,6 +29,8 @@ Used **Jetpack**'s Viewmodel, Fragment, FragmentFactory and RecyclerView
 Used JUnit and Espresso to **test** throughout the development.
 
 
+**High order function** to handle the onClickListener in the RecyclerView
+
 
 License
 TT0121 uses SeekArc MIT License (MIT) Copyright (c) 2013 Triggertrap Ltd Author Neil Davies
