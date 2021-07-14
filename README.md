@@ -3,9 +3,11 @@
 
 Design of the different parameter pages
 
-<img src="https://i.imgur.com/v9uWUff.png">
-<img src="https://i.imgur.com/P5aLHWh.png">
-<img src="https://i.imgur.com/WsZ0EQH.png">
+<img src="https://i.imgur.com/S9kLvBo.png">
+<img src="https://i.imgur.com/E9KH4aK.png">
+<img src="https://i.imgur.com/jj0QUZK.png">
+<img src="https://i.imgur.com/MbZp5Hz.png">
+
 
 [Imgur](https://imgur.com/HqDPcPN)
 

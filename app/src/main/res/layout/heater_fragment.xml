@@ -4,39 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.device.HeaterFragment">
+    tools:context=".view.device.HeaterFragment"
+    android:clipChildren="false">
 
-    <TextView
-        android:id="@+id/tv_name_heater"
+    <include
+        android:id="@+id/include_device_name"
+        layout="@layout/device_name_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_heater_name"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
         android:id="@+id/sw_heater_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:track="@drawable/switch_track_custom"
-        android:thumb="@drawable/switch_thumb_custom"
+        android:layout_marginTop="10dp"
+        android:showText="true"
         android:textOff="@string/switch_off"
         android:textOn="@string/switch_on"
-        android:showText="true"
-        app:layout_constraintStart_toStartOf="@+id/tv_name_heater"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_heater" />
+        android:thumb="@drawable/switch_thumb_custom"
+        android:track="@drawable/switch_track_custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_device_name" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="50dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw_heater_on">
 
@@ -65,5 +68,8 @@
             android:layout_weight="2"
             android:text="+" />
     </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

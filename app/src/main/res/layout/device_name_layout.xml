@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clipChildren="false">
+
+    <TextView
+        android:id="@+id/tv_device_name"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_heater_name"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/tv_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="-110dp"
+        android:layout_marginBottom="-120dp"
+        android:fontFamily="sans-serif-thin"
+        android:rotation="90"
+        android:text="}"
+        android:textAlignment="center"
+        android:textSize="250dp"
+        android:textColor = "#999"
+        android:shadowColor = "#000"
+        android:shadowDx = "-2"
+        android:shadowDy = "-2"
+        android:shadowRadius = "1"/>
+
+
+</FrameLayout>

@@ -7,16 +7,14 @@
     xmlns:seekarc="http://schemas.android.com/apk/res-auto"
     tools:context=".view.device.LightFragment">
 
-    <TextView
-        android:id="@+id/tv_name_light"
+    <include
+        android:id="@+id/include_device_name"
+        layout="@layout/device_name_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_light_name"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <Switch
         android:id="@+id/sw_heater_on"
@@ -30,7 +28,7 @@
         android:thumb="@drawable/switch_thumb_custom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_light" />
+        app:layout_constraintTop_toBottomOf="@+id/include_device_name" />
 
     <com.triggertrap.seekarc.SeekArc
         android:id="@+id/seekArc"

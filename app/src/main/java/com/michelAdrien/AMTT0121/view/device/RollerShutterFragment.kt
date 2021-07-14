@@ -1,40 +1,49 @@
 package com.michelAdrien.AMTT0121.view.device
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.michelAdrien.AMTT0121.R
+import com.michelAdrien.AMTT0121.databinding.HeaterFragmentBinding
+import com.michelAdrien.AMTT0121.databinding.LightFragmentBinding
+import com.michelAdrien.AMTT0121.databinding.RollerShutterFragmentBinding
 import com.michelAdrien.AMTT0121.view.MainFragmentFactory
+import com.michelAdrien.AMTT0121.viewModel.device.LightViewModel
 import com.michelAdrien.AMTT0121.viewModel.device.RollerShutterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class RollerShutterFragment : Fragment() {
+@AndroidEntryPoint
+class RollerShutterFragment : DeviceFragmentAbs() {
+    private var _binding: RollerShutterFragmentBinding? = null
+    private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance() = RollerShutterFragment()
-    }
-
-    private lateinit var viewModel: RollerShutterViewModel
+    private val viewModel: RollerShutterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if (getArguments() != null) {
-            if (getArguments() != null) {
-                Toast.makeText(activity, "ID :" + requireArguments().getString(MainFragmentFactory.DEVICE_ID_EXTRA), Toast.LENGTH_LONG).show()
-            }
-        }
-        return inflater.inflate(R.layout.roller_shutter_fragment, container, false)
+        _binding = RollerShutterFragmentBinding.inflate(inflater, container, false)
+        //val root = binding.root
+
+        //viewModel = ViewModelProvider(this).get(RollerShutterViewModel::class.java)
+        viewModel.name_device.observe(viewLifecycleOwner, {
+            binding.includeDeviceName.tvDeviceName.setText(it)
+        })
+
+        loadDeviceInfo(viewModel)
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RollerShutterViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
 
 }
