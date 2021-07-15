@@ -3,10 +3,10 @@
 
 Design of the different parameter pages
 
-<img src="https://i.imgur.com/S9kLvBo.png">
-<img src="https://i.imgur.com/E9KH4aK.png">
-<img src="https://i.imgur.com/jj0QUZK.png">
-<img src="https://i.imgur.com/MbZp5Hz.png">
+<img src="https://i.imgur.com/S9kLvBo.png"  width="400" height="500">
+<img src="https://i.imgur.com/E9KH4aK.png" width="400" height="500">
+<img src="https://i.imgur.com/jj0QUZK.png" width="400" height="500">
+<img src="https://i.imgur.com/8IdDlBV.png" width="400" height="500">
 
 
 [Imgur](https://imgur.com/HqDPcPN)
@@ -34,3 +34,4 @@ Used JUnit and Espresso to **test** throughout the development.
 
 License
 TT0121 uses SeekArc MIT License (MIT) Copyright (c) 2013 Triggertrap Ltd Author Neil Davies
+TT0121 uses Android-VerticalSlider, Licensed under the Apache License, Version 2.0
