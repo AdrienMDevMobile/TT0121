@@ -3,13 +3,10 @@
 
 Design of the different parameter pages
 
-<img src="https://i.imgur.com/S9kLvBo.png"  width="400" height="500">
-<img src="https://i.imgur.com/E9KH4aK.png" width="400" height="500">
-<img src="https://i.imgur.com/jj0QUZK.png" width="400" height="500">
-<img src="https://i.imgur.com/8IdDlBV.png" width="400" height="500">
-
-
-[Imgur](https://imgur.com/HqDPcPN)
+<img src="https://i.imgur.com/jj0QUZK.png"  width="350" height="550">
+<img src="https://i.imgur.com/E9KH4aK.png" width="350" height="550">
+<img src="https://i.imgur.com/jj0QUZK.png" width="350" height="550">
+<img src="https://i.imgur.com/8IdDlBV.png" width="350" height="550">
 
 **Hilt** for Dependency Injection
 **Volley** and **Coroutine** to get the device list.
